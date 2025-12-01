@@ -62,24 +62,10 @@ const OrderForm: React.FC = () => {
 
     try {
       // --- SIMULATION START ---
-      // Since we don't have the actual Apps Script URL deployed yet, we simulate the network request.
       console.log(`[Mock API] Saving to Sheet ${SHEET_ID}...`);
       console.log(`[Mock API] Data:`, payload);
       
-      // Simulate network delay
       await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // If you had the URL, the real code would look like this:
-      /*
-      await fetch('YOUR_GOOGLE_SCRIPT_URL', {
-        method: 'POST',
-        mode: 'no-cors', // Important for Google Apps Script
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload)
-      });
-      */
       // --- SIMULATION END ---
 
       setSuccess(true);
@@ -132,23 +118,26 @@ const OrderForm: React.FC = () => {
   }
 
   return (
-    <div className="w-full max-w-md relative group">
-        {/* Glow Effect Background */}
-        <div className="absolute -inset-1 bg-gradient-to-r from-gold-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+    <div className="w-full max-w-md relative group mx-auto">
+        {/* Animated Gradient Border */}
+        <div className="absolute -inset-[3px] bg-gradient-to-r from-gold-500 via-purple-500 to-gold-500 rounded-2xl blur-md opacity-75 group-hover:opacity-100 transition duration-500 animate-[shimmer_3s_linear_infinite] bg-[length:200%_100%]"></div>
         
-        <form onSubmit={handleSubmit} className="relative w-full bg-brand-card/90 backdrop-blur-md p-8 rounded-2xl border border-gray-800 shadow-2xl overflow-hidden">
+        <form onSubmit={handleSubmit} className="relative w-full bg-[#121212] p-8 rounded-2xl shadow-2xl overflow-hidden">
+            {/* Background Texture */}
+            <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+
             {/* Form Header */}
-            <div className="mb-8 text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gold-500/10 mb-4 border border-gold-500/30">
-                    <ShoppingBag size={24} className="text-gold-500" />
+            <div className="mb-8 text-center relative z-10">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-gold-500/20 to-transparent mb-4 border border-gold-500/30 shadow-[0_0_15px_rgba(212,168,15,0.2)]">
+                    <ShoppingBag size={28} className="text-gold-500" />
                 </div>
-                <h3 className="text-xl font-bold text-white">Thông Tin Nhận Hàng</h3>
-                <p className="text-sm text-gray-500 mt-1">Vui lòng điền đầy đủ thông tin bên dưới</p>
+                <h3 className="text-2xl font-bold text-white mb-2">Thông Tin Nhận Hàng</h3>
+                <p className="text-sm text-gray-400">Điền thông tin để nhận tư vấn từ chuyên gia</p>
             </div>
         
-            <div className="space-y-5">
-                <div className="group/input">
-                    <label className="block text-xs font-bold text-gold-500 uppercase tracking-wider mb-2 ml-1">Họ và Tên</label>
+            <div className="space-y-6 relative z-10">
+                <div className="group/input relative">
+                    <label className="block text-xs font-bold text-gold-500 uppercase tracking-wider mb-2 ml-1 transition-colors group-focus-within/input:text-white">Họ và Tên</label>
                     <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <User className="h-5 w-5 text-gray-500 group-focus-within/input:text-gold-400 transition-colors" />
@@ -159,14 +148,14 @@ const OrderForm: React.FC = () => {
                             value={formData.name}
                             onChange={handleChange}
                             type="text" 
-                            className="block w-full pl-10 pr-3 py-3 border border-gray-700 rounded-xl leading-5 bg-black/60 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500 sm:text-sm transition-all" 
+                            className="block w-full pl-10 pr-3 py-3.5 border border-gray-700 rounded-xl leading-5 bg-black/50 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500 sm:text-sm transition-all shadow-inner" 
                             placeholder="Ví dụ: Nguyễn Văn An" 
                         />
                     </div>
                 </div>
 
-                <div className="group/input">
-                    <label className="block text-xs font-bold text-gold-500 uppercase tracking-wider mb-2 ml-1">Số Điện Thoại</label>
+                <div className="group/input relative">
+                    <label className="block text-xs font-bold text-gold-500 uppercase tracking-wider mb-2 ml-1 transition-colors group-focus-within/input:text-white">Số Điện Thoại</label>
                     <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <Phone className="h-5 w-5 text-gray-500 group-focus-within/input:text-gold-400 transition-colors" />
@@ -179,14 +168,14 @@ const OrderForm: React.FC = () => {
                             type="tel" 
                             pattern="[0-9]{10,11}"
                             title="Vui lòng nhập số điện thoại hợp lệ (10-11 số)"
-                            className="block w-full pl-10 pr-3 py-3 border border-gray-700 rounded-xl leading-5 bg-black/60 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500 sm:text-sm transition-all" 
+                            className="block w-full pl-10 pr-3 py-3.5 border border-gray-700 rounded-xl leading-5 bg-black/50 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500 sm:text-sm transition-all shadow-inner" 
                             placeholder="Ví dụ: 0912 345 678" 
                         />
                     </div>
                 </div>
 
-                <div className="group/input">
-                    <label className="block text-xs font-bold text-gold-500 uppercase tracking-wider mb-2 ml-1">Email</label>
+                <div className="group/input relative">
+                    <label className="block text-xs font-bold text-gold-500 uppercase tracking-wider mb-2 ml-1 transition-colors group-focus-within/input:text-white">Email</label>
                     <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <Mail className="h-5 w-5 text-gray-500 group-focus-within/input:text-gold-400 transition-colors" />
@@ -197,7 +186,7 @@ const OrderForm: React.FC = () => {
                             value={formData.email}
                             onChange={handleChange}
                             type="email" 
-                            className="block w-full pl-10 pr-3 py-3 border border-gray-700 rounded-xl leading-5 bg-black/60 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500 sm:text-sm transition-all" 
+                            className="block w-full pl-10 pr-3 py-3.5 border border-gray-700 rounded-xl leading-5 bg-black/50 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500 sm:text-sm transition-all shadow-inner" 
                             placeholder="Ví dụ: contact@example.com" 
                         />
                     </div>
@@ -206,8 +195,11 @@ const OrderForm: React.FC = () => {
                 <button 
                     type="submit" 
                     disabled={loading}
-                    className="w-full flex justify-center items-center gap-2 py-4 px-4 border border-transparent text-base font-bold rounded-xl text-black bg-gradient-to-r from-gold-300 via-gold-500 to-gold-600 hover:from-gold-200 hover:to-gold-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gold-500 transition-all shadow-[0_5px_15px_rgba(212,168,15,0.3)] hover:shadow-[0_8px_25px_rgba(212,168,15,0.5)] transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none mt-4"
+                    className="w-full relative overflow-hidden flex justify-center items-center gap-2 py-4 px-4 border border-transparent text-base font-bold rounded-xl text-black bg-gradient-to-r from-gold-300 via-gold-500 to-gold-600 hover:from-gold-200 hover:to-gold-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gold-500 transition-all shadow-[0_5px_15px_rgba(212,168,15,0.3)] hover:shadow-[0_10px_30px_rgba(212,168,15,0.5)] transform hover:-translate-y-1 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none mt-6 group/btn"
                 >
+                     {/* Shimmer effect inside button */}
+                     <div className="absolute inset-0 bg-white/20 w-[40%] skew-x-12 -translate-x-[300%] group-hover/btn:animate-[shimmer_1s_infinite]"></div>
+
                     {loading ? (
                         <>
                             <Loader2 className="animate-spin" />
@@ -215,16 +207,19 @@ const OrderForm: React.FC = () => {
                         </>
                     ) : (
                         <>
-                            <span>NHẬN ƯU ĐÃI NGAY</span>
-                            <ArrowRight size={20} />
+                            <span className="relative z-10">NHẬN ƯU ĐÃI NGAY</span>
+                            <ArrowRight size={20} className="relative z-10 group-hover/btn:translate-x-1 transition-transform" />
                         </>
                     )}
                 </button>
 
-                <div className="flex items-center justify-center gap-2 mt-4 opacity-60">
-                     <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                <div className="flex items-center justify-center gap-2 mt-4 opacity-70">
+                     <span className="relative flex h-3 w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                    </span>
                      <p className="text-xs text-center text-gray-400">
-                        Đăng ký để giữ suất ưu đãi giảm 50%
+                        Hơn <span className="text-white font-bold">1,240</span> khách hàng đã đăng ký hôm nay
                     </p>
                 </div>
             </div>
