@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doctor Magic - Lip Repair Gel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              gold: {
+                100: '#fcf6ba',
+                200: '#f7e682',
+                300: '#f2d449',
+                400: '#ecc21c',
+                500: '#d4a80f', // Main Gold
+                600: '#aa8206',
+                700: '#886206',
+              },
+              brand: {
+                black: '#0a0a0a',
+                dark: '#121212',
+                card: '#1c1c1c',
+              }
+            },
+            fontFamily: {
+              serif: ['"Playfair Display"', 'serif'],
+              sans: ['"Inter"', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      .text-glow {
+        text-shadow: 0 0 10px rgba(212, 168, 15, 0.5);
+      }
+      .gold-gradient {
+        background: linear-gradient(135deg, #fcf6ba 0%, #d4a80f 50%, #aa8206 100%);
+      }
+      .gold-text-gradient {
+        background: linear-gradient(to right, #fcf6ba, #d4a80f);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-brand-black text-gray-100 font-sans antialiased overflow-x-hidden">
+    <div id="root"></div>
+  </body>
+</html>
